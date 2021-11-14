@@ -3,7 +3,13 @@
 require('dotenv/config');
 
 // ℹ️ Connects to the database
-require('./db');
+
+const mongoose = require("mongoose");
+const dbUri = 'mongodb+srv://AdrianAranda:breakerone2"@playground.mwk2u.mongodb.net/delivery-drones?retryWrites=true&w=majority';
+
+mongoose.connect(dbUri, {useNewUrlParser: true, useUnifiedTopology: true })
+.then((result) => console.log("Connected to DB!") )
+.catch((error) => console.log("Connection Failed"))
 
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
