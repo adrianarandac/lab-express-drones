@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Drone = require("../models/Drone.model");
 
-// require the Drone model here
 
 router.get("/drones", async (req, res, next) => {
   // Iteration #2: List the drones
@@ -18,8 +17,6 @@ router.get("/drones", async (req, res, next) => {
 router
   .route("/drones/create")
   .get(async (req, res, next) => {
-    // Iteration #3: Add a new drone
-    // ... your code here
     try {
       res.render("drones/create-form");
     } catch (err) {
@@ -41,7 +38,6 @@ router
 router
   .route("/drones/:id/edit")
   .get(async (req, res, next) => {
-    // Iteration #4: Update the drone
     try {
       const id = req.params.id;
       const droneToUpdate = await Drone.findById(id);
@@ -54,7 +50,7 @@ router
     try {
       const { name, propellers, maxSpeed } = req.body;
       const id = req.params.id;
-      const upda = await Drone.findByIdAndUpdate(id, {
+      const updateDrone = await Drone.findByIdAndUpdate(id, {
         propellers,
         name,
         maxSpeed,
